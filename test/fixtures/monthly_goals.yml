@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  annual_theme: one
+  mandala_item: one
+  month: 1
+  goal: MyText
+
+two:
+  user: two
+  annual_theme: two
+  mandala_item: two
+  month: 1
+  goal: MyText

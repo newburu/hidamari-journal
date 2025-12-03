@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  annual_theme: one
+  parent: one
+  content: MyString
+  position: 1
+  is_center: false
+
+two:
+  annual_theme: two
+  parent: two
+  content: MyString
+  position: 1
+  is_center: false
