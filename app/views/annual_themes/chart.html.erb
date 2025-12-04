@@ -1,0 +1,27 @@
+<div class="mx-auto w-full max-w-4xl px-4 py-8">
+  <div class="mb-8 flex justify-between items-center">
+    <div>
+      <%= link_to "← Back to Theme", annual_theme_path(@annual_theme), class: "text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700" %>
+      <h1 class="text-3xl font-bold text-gray-900 mt-2">Mandala Chart: <%= @annual_theme.year %></h1>
+    </div>
+  </div>
+
+  <div class="aspect-square max-w-2xl mx-auto bg-gray-200 border-4 border-gray-800 rounded-lg overflow-hidden shadow-2xl">
+    <div class="grid grid-cols-3 grid-rows-3 gap-1 h-full bg-gray-300">
+      <% (0..8).each do |position| %>
+        <% item = @mandala_items.find { |i| i.position == position } %>
+        <div class="bg-white overflow-hidden relative <%= 'bg-indigo-50' if item&.is_center? %>">
+          <% if item %>
+            <%= render item %>
+          <% else %>
+             <div class="h-full flex items-center justify-center text-red-500">Error</div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="mt-8 text-center text-gray-500 text-sm">
+    <p>Click on any cell to edit your goals. The center is your main Annual Theme.</p>
+  </div>
+</div>

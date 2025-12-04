@@ -1,0 +1,10 @@
+<%= turbo_frame_tag @mandala_item do %>
+  <div class="h-full w-full p-1">
+    <%= form_with(model: @mandala_item, class: "h-full flex flex-col justify-center") do |form| %>
+      <%= form.text_area :content,
+          class: "w-full h-full text-center border-0 p-1 bg-white focus:ring-2 focus:ring-indigo-500 resize-none rounded text-lg",
+          placeholder: "Goal...",
+          onblur: "this.form.requestSubmit()" %>
+    <% end %>
+  </div>
+<% end %>
