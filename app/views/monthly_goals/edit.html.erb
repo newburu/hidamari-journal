@@ -1,0 +1,10 @@
+<div class="mx-auto w-full max-w-2xl px-4 py-8">
+  <div class="mb-8">
+    <%= link_to "Back to Goals", annual_theme_monthly_goals_path(@annual_theme), class: "text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700" %>
+  </div>
+
+  <div class="bg-white shadow sm:rounded-lg p-6">
+    <h1 class="text-2xl font-bold text-gray-900 mb-6">Edit Monthly Goal</h1>
+    <%= render "form", monthly_goal: @monthly_goal %>
+  </div>
+</div>
