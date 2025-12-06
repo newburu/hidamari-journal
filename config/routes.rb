@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :mandala_items, only: [:edit, :update]
   resources :daily_tasks, only: [:index, :create, :update, :destroy]
+  resources :reflections
 
   root to: "annual_themes#index"
 end
