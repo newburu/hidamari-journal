@@ -1,0 +1,28 @@
+<%= turbo_frame_tag daily_task do %>
+  <div class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-50 transition-colors <%= 'opacity-50' if daily_task.completed? %>">
+    <div class="flex items-center space-x-3 flex-grow">
+      <%= form_with(model: daily_task, url: daily_task_path(daily_task), method: :patch, class: "flex items-center") do |f| %>
+        <%= f.check_box :completed,
+            onchange: "this.form.requestSubmit()",
+            class: "h-5 w-5 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer" %>
+      <% end %>
+
+      <div class="flex-grow">
+        <p class="text-gray-900 font-medium <%= 'line-through text-gray-500' if daily_task.completed? %>">
+          <%= daily_task.title %>
+        </p>
+        <% if daily_task.monthly_goal %>
+          <span class="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+            <%= daily_task.monthly_goal.goal.truncate(20) %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+
+    <%= button_to daily_task_path(daily_task), method: :delete, class: "text-gray-400 hover:text-red-500 transition-colors ml-4", data: { turbo_confirm: "Are you sure?" } do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456-1.22L16.2 1.88a1.25 1.25 0 0 0-1.22-1h-2.94a1.25 1.25 0 0 0-1.22 1L9.28 4.57m-3.6 0 .5 14.25" />
+      </svg>
+    <% end %>
+  </div>
+<% end %>

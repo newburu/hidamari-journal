@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  get "monthly_goals/index"
-  get "monthly_goals/new"
-  get "monthly_goals/create"
-  get "monthly_goals/edit"
-  get "monthly_goals/update"
-  get "monthly_goals/destroy"
-  get "mandala_items/edit"
-  get "mandala_items/update"
   devise_for :users
 
   resources :annual_themes do
@@ -17,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :mandala_items, only: [:edit, :update]
+  resources :daily_tasks, only: [:index, :create, :update, :destroy]
 
   root to: "annual_themes#index"
 end
