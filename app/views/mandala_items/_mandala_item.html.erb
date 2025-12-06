@@ -1,0 +1,17 @@
+<%= turbo_frame_tag mandala_item do %>
+  <div class="h-full w-full flex items-center justify-center p-2 text-center cursor-pointer hover:bg-indigo-50 transition-colors duration-200"
+       onclick="document.getElementById('<%= dom_id(mandala_item, :link) %>').click()">
+
+    <%= link_to "", edit_mandala_item_path(mandala_item), class: "hidden", id: dom_id(mandala_item, :link) %>
+
+    <% if mandala_item.content.present? %>
+      <div class="<%= mandala_item.is_center? ? 'text-2xl font-bold text-indigo-700' : 'text-lg font-medium text-gray-800' %>">
+        <%= mandala_item.content %>
+      </div>
+    <% else %>
+      <div class="text-gray-300 text-sm">
+        Empty
+      </div>
+    <% end %>
+  </div>
+<% end %>

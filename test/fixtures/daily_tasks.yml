@@ -1,0 +1,13 @@
+one:
+  user: one
+  monthly_goal: one
+  date: 2025-12-03
+  title: "MyString"
+  completed: false
+
+two:
+  user: two
+  monthly_goal: two
+  date: 2025-12-03
+  title: "MyString"
+  completed: false

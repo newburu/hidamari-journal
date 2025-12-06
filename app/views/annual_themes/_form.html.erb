@@ -1,0 +1,33 @@
+<%= form_with(model: annual_theme, class: "contents") do |form| %>
+  <% if annual_theme.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(annual_theme.errors.count, "error") %> prohibited this annual_theme from being saved:</h2>
+
+      <ul>
+        <% annual_theme.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :year, class: "block text-sm font-medium leading-6 text-gray-900" %>
+    <%= form.number_field :year, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full focus:ring-2 focus:ring-indigo-600 focus:border-transparent" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :kanji, "Kanji of the Year (One Character)", class: "block text-sm font-medium leading-6 text-gray-900" %>
+    <%= form.text_field :kanji, maxlength: 1, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full text-2xl text-center focus:ring-2 focus:ring-indigo-600 focus:border-transparent", placeholder: "挑" %>
+    <p class="mt-2 text-sm text-gray-500">Choose a single Kanji that represents your theme for the year.</p>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :meaning, "Meaning & Big Goals", class: "block text-sm font-medium leading-6 text-gray-900" %>
+    <%= form.text_area :meaning, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full focus:ring-2 focus:ring-indigo-600 focus:border-transparent", placeholder: "Why did you choose this Kanji? What do you want to achieve?" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-indigo-600 text-white inline-block font-medium cursor-pointer hover:bg-indigo-500" %>
+  </div>
+<% end %>
