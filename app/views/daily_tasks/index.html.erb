@@ -35,4 +35,18 @@
       </div>
     <% end %>
   </div>
+
+  <div class="mt-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">Calendar</h2>
+    <%= month_calendar(events: @calendar_tasks, attribute: :date) do |date, tasks| %>
+      <%= link_to date.day, daily_tasks_path(date: date), class: "block w-full h-full hover:bg-gray-100 #{'font-bold text-indigo-600' if date == @date}" %>
+      <% if tasks.any? %>
+        <div class="mt-1">
+          <span class="inline-flex items-center rounded-full bg-indigo-100 px-2 py-0.5 text-xs font-medium text-indigo-800">
+            <%= tasks.count %>
+          </span>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>

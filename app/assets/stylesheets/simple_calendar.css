@@ -1,0 +1,28 @@
+.simple-calendar {
+  @apply w-full border-collapse mb-4;
+}
+
+.simple-calendar th {
+  @apply py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-sm font-semibold text-gray-900;
+}
+
+.simple-calendar td {
+  @apply h-24 border border-gray-200 p-2 align-top text-sm;
+}
+
+.simple-calendar .prev-month,
+.simple-calendar .next-month {
+  @apply text-gray-400 bg-gray-50;
+}
+
+.simple-calendar .today {
+  @apply bg-indigo-50;
+}
+
+.simple-calendar-heading {
+  @apply text-center text-lg font-bold mb-4 flex justify-between items-center;
+}
+
+.simple-calendar-heading a {
+  @apply text-gray-500 hover:text-gray-900 px-4 py-2;
+}
