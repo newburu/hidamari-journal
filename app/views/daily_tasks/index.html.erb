@@ -9,7 +9,10 @@
         →
       <% end %>
     </div>
-    <%= link_to "Today", daily_tasks_path, class: "text-sm font-semibold text-indigo-600 hover:text-indigo-900" unless @date == Date.current %>
+    <div class="flex space-x-4 items-center">
+      <%= link_to "Today", daily_tasks_path, class: "text-sm font-semibold text-indigo-600 hover:text-indigo-900" unless @date == Date.current %>
+      <%= link_to "Calendar View", calendar_daily_tasks_path, class: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
+    </div>
   </div>
 
   <div class="bg-white shadow sm:rounded-lg p-6 mb-8">

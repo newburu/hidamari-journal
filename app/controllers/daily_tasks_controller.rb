@@ -17,6 +17,11 @@ class DailyTasksController < ApplicationController
     @daily_task = current_user.daily_tasks.new(date: @date)
   end
 
+  def calendar
+    start_date = params.fetch(:start_date, Date.today).to_date
+    @daily_tasks = current_user.daily_tasks.where(date: start_date.all_month)
+  end
+
   def create
     @daily_task = current_user.daily_tasks.new(daily_task_params)
 
