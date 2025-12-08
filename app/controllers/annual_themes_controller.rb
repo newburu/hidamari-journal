@@ -34,7 +34,7 @@ class AnnualThemesController < ApplicationController
     @annual_theme = current_user.annual_themes.new(annual_theme_params)
 
     if @annual_theme.save
-      redirect_to annual_theme_url(@annual_theme), notice: "Annual theme was successfully created."
+      redirect_to annual_theme_url(@annual_theme), notice: t(".success")
     else
       render :new, status: :unprocessable_entity
     end
@@ -42,7 +42,7 @@ class AnnualThemesController < ApplicationController
 
   def update
     if @annual_theme.update(annual_theme_params)
-      redirect_to annual_theme_url(@annual_theme), notice: "Annual theme was successfully updated."
+      redirect_to annual_theme_url(@annual_theme), notice: t(".success")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -51,7 +51,7 @@ class AnnualThemesController < ApplicationController
   def destroy
     @annual_theme.destroy!
 
-    redirect_to annual_themes_url, notice: "Annual theme was successfully destroyed."
+    redirect_to annual_themes_url, notice: t(".success")
   end
 
   private

@@ -1,0 +1,25 @@
+ja:
+  common:
+    sign_out: "サインアウト"
+    sign_in: "サインイン"
+  layouts:
+    application:
+      annual_themes: "年間テーマ"
+      daily_tasks: "デイリータスク"
+      reflections: "振り返り"
+      mandala_life: "マンダラライフ"
+  annual_themes:
+    create:
+      success: "年間テーマを作成しました。"
+    update:
+      success: "年間テーマを更新しました。"
+    destroy:
+      success: "年間テーマを削除しました。"
+  activerecord:
+    models:
+      annual_theme: "年間テーマ"
+    attributes:
+      annual_theme:
+        year: "年"
+        kanji: "今年の漢字"
+        meaning: "意味"

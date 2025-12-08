@@ -1,20 +1,22 @@
 Rails.application.routes.draw do
-  devise_for :users
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+    devise_for :users
 
-  resources :annual_themes do
-    member do
-      get :chart
+    resources :annual_themes do
+      member do
+        get :chart
+      end
+      resources :monthly_goals
     end
-    resources :monthly_goals
-  end
 
-  resources :mandala_items, only: [:edit, :update]
-  resources :daily_tasks, only: [:index, :create, :update, :destroy] do
-    collection do
-      get :calendar
+    resources :mandala_items, only: [:edit, :update]
+    resources :daily_tasks, only: [:index, :create, :update, :destroy] do
+      collection do
+        get :calendar
+      end
     end
-  end
-  resources :reflections
+    resources :reflections
 
-  root to: "annual_themes#index"
+    root to: "annual_themes#index"
+  end
 end

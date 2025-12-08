@@ -1,0 +1,33 @@
+ja:
+  devise:
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      already_signed_out: "すでにログアウトしています。"
+    registrations:
+      signed_up: "アカウント登録が完了しました。"
+      updated: "アカウント情報を変更しました。"
+    passwords:
+      send_instructions: "パスワードの再設定方法を数分以内にメールで送信します。"
+      updated: "パスワードが正常に変更されました。"
+    confirmations:
+      send_instructions: "アカウントの有効化方法を数分以内にメールで送信します。"
+      confirmed: "アカウントが正常に有効化されました。"
+    unlocks:
+      send_instructions: "アカウントのロック解除方法を数分以内にメールで送信します。"
+      unlocked: "アカウントが正常にロック解除されました。ログインしてください。"
+    mailer:
+      confirmation_instructions:
+        subject: "アカウントの有効化について"
+      reset_password_instructions:
+        subject: "パスワードの再設定について"
+      unlock_instructions:
+        subject: "アカウントのロック解除について"
+  errors:
+    messages:
+      not_found: "見つかりませんでした。"
+      already_confirmed: "はすでに有効化されています。ログインしてください。"
+      not_locked: "はロックされていません。"
+      not_saved:
+        one: "1件のエラーが発生したため、このアカウントは保存されませんでした:"
+        other: "%{count}件のエラーが発生したため、このアカウントは保存されませんでした:"
