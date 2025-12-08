@@ -155,6 +155,9 @@ en:
     tasks: "Tasks"
     done: "Done"
   devise:
+    registrations:
+      new:
+        prompt_for_email: "Please enter your email address to complete the registration."
     shared:
       minimum_password_length: "(%{count} characters minimum)"
   mandala_items:

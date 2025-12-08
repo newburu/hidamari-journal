@@ -70,5 +70,7 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+gem "omniauth-google-oauth2"
+gem "omniauth-twitter2"
 
 gem "holidays", "~> 8.8"

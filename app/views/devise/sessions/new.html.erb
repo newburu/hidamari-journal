@@ -1,5 +1,12 @@
 <h2><%= t('devise.sessions.new.sign_in') %></h2>
 
+<div class="my-4">
+  <%= button_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false }, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+</div>
+<div class="my-4">
+  <%= button_to "Sign in with X", user_twitter2_omniauth_authorize_path, method: :post, data: { turbo: false }, class: "bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded" %>
+</div>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
