@@ -1,0 +1,13 @@
+<footer class="bg-gray-800 text-white mt-auto">
+  <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center">
+      <div>
+        <p>&copy; <%= Time.current.year %> Mandala Goals. All rights reserved.</p>
+      </div>
+      <div class="flex space-x-4">
+        <%= link_to t('layouts.footer.terms_of_service'), terms_path, class: "text-gray-300 hover:text-white" %>
+        <%= link_to t('layouts.footer.privacy_policy'), privacy_policy_path, class: "text-gray-300 hover:text-white" %>
+      </div>
+    </div>
+  </div>
+</footer>

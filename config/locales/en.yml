@@ -14,6 +14,9 @@ en:
       daily_tasks: "Daily Tasks"
       reflections: "Reflections"
       mandala_life: "Hidamari Journal"
+    footer:
+      terms_of_service: "Terms of Service"
+      privacy_policy: "Privacy Policy"
   annual_themes:
     create:
       create:
