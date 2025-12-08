@@ -19,7 +19,7 @@ class MonthlyGoalsController < ApplicationController
     @monthly_goal.user = current_user
 
     if @monthly_goal.save
-      redirect_to annual_theme_monthly_goals_path(@annual_theme), notice: "Monthly goal was successfully created."
+      redirect_to annual_theme_monthly_goals_path(@annual_theme), notice: t("monthly_goals.create.success")
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class MonthlyGoalsController < ApplicationController
 
   def update
     if @monthly_goal.update(monthly_goal_params)
-      redirect_to annual_theme_monthly_goals_path(@annual_theme), notice: "Monthly goal was successfully updated."
+      redirect_to annual_theme_monthly_goals_path(@annual_theme), notice: t("monthly_goals.update.success")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class MonthlyGoalsController < ApplicationController
 
   def destroy
     @monthly_goal.destroy!
-    redirect_to annual_theme_monthly_goals_path(@annual_theme), notice: "Monthly goal was successfully destroyed."
+    redirect_to annual_theme_monthly_goals_path(@annual_theme), notice: t("monthly_goals.destroy.success")
   end
 
   private

@@ -1,8 +1,8 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">振り返り編集</h1>
+  <h1 class="font-bold text-4xl"><%= t('reflections.edit.title') %></h1>
 
   <%= render "form", reflection: @reflection %>
 
-  <%= link_to "表示", @reflection, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "一覧に戻る", reflections_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to t('reflections.edit.show'), @reflection, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to t('reflections.edit.back'), reflections_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>

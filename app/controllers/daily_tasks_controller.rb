@@ -10,9 +10,9 @@ class DailyTasksController < ApplicationController
     current_annual_theme = current_user.annual_themes.find_by(year: @date.year)
     @monthly_goals = if current_annual_theme
                        current_annual_theme.monthly_goals.where(month: @date.month)
-                     else
+    else
                        []
-                     end
+    end
 
     @daily_task = current_user.daily_tasks.new(date: @date)
   end
@@ -26,9 +26,9 @@ class DailyTasksController < ApplicationController
     @daily_task = current_user.daily_tasks.new(daily_task_params)
 
     if @daily_task.save
-      redirect_to daily_tasks_path(date: @daily_task.date), notice: "Task created."
+      redirect_to daily_tasks_path(date: @daily_task.date), notice: t("daily_tasks.create.success")
     else
-      redirect_to daily_tasks_path(date: @daily_task.date), alert: "Could not create task."
+      redirect_to daily_tasks_path(date: @daily_task.date), alert: t("daily_tasks.create.failure")
     end
   end
 
@@ -36,10 +36,10 @@ class DailyTasksController < ApplicationController
     if @daily_task.update(daily_task_params)
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to daily_tasks_path(date: @daily_task.date), notice: "Task updated." }
+        format.html { redirect_to daily_tasks_path(date: @daily_task.date), notice: t("daily_tasks.update.success") }
       end
     else
-      redirect_to daily_tasks_path(date: @daily_task.date), alert: "Update failed."
+      redirect_to daily_tasks_path(date: @daily_task.date), alert: t("daily_tasks.update.failure")
     end
   end
 
@@ -48,7 +48,7 @@ class DailyTasksController < ApplicationController
     @daily_task.destroy!
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.remove(@daily_task) }
-      format.html { redirect_to daily_tasks_path(date: date), notice: "Task deleted." }
+      format.html { redirect_to daily_tasks_path(date: date), notice: t("daily_tasks.destroy.success") }
     end
   end
 

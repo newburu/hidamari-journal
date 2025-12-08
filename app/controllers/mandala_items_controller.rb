@@ -14,7 +14,7 @@ class MandalaItemsController < ApplicationController
 
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to chart_annual_theme_path(@mandala_item.annual_theme), notice: "Updated." }
+        format.html { redirect_to chart_annual_theme_path(@mandala_item.annual_theme), notice: t("mandala_items.update.success") }
       end
     else
       render :edit, status: :unprocessable_entity
@@ -27,7 +27,7 @@ class MandalaItemsController < ApplicationController
     @mandala_item = MandalaItem.find(params[:id])
     # Ensure ownership
     unless @mandala_item.annual_theme.user_id == current_user.id
-      redirect_to root_path, alert: "Not authorized."
+      redirect_to root_path, alert: t("mandala_items.authorization_error")
     end
   end
 

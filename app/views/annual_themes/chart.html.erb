@@ -1,8 +1,8 @@
 <div class="mx-auto w-full max-w-4xl px-4 py-8">
   <div class="mb-8 flex justify-between items-center">
     <div>
-      <%= link_to "← Back to Theme", annual_theme_path(@annual_theme), class: "text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700" %>
-      <h1 class="text-3xl font-bold text-gray-900 mt-2">Mandala Chart: <%= @annual_theme.year %></h1>
+      <%= link_to t('annual_themes.chart.back'), annual_theme_path(@annual_theme), class: "text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700" %>
+      <h1 class="text-3xl font-bold text-gray-900 mt-2"><%= t('annual_themes.chart.title', year: @annual_theme.year) %></h1>
     </div>
   </div>
 
@@ -14,7 +14,7 @@
           <% if item %>
             <%= render item %>
           <% else %>
-             <div class="h-full flex items-center justify-center text-red-500">Error</div>
+             <div class="h-full flex items-center justify-center text-red-500"><%= t('annual_themes.chart.error') %></div>
           <% end %>
         </div>
       <% end %>
@@ -22,6 +22,6 @@
   </div>
 
   <div class="mt-8 text-center text-gray-500 text-sm">
-    <p>Click on any cell to edit your goals. The center is your main Annual Theme.</p>
+    <p><%= t('annual_themes.chart.instruction') %></p>
   </div>
 </div>

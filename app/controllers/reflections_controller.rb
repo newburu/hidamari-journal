@@ -20,7 +20,7 @@ class ReflectionsController < ApplicationController
     @reflection = current_user.reflections.build(reflection_params)
 
     if @reflection.save
-      redirect_to reflections_url, notice: "振り返りを作成しました。"
+      redirect_to reflections_url, notice: t("reflections.create.success")
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class ReflectionsController < ApplicationController
 
   def update
     if @reflection.update(reflection_params)
-      redirect_to reflections_url, notice: "振り返りを更新しました。"
+      redirect_to reflections_url, notice: t("reflections.update.success")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class ReflectionsController < ApplicationController
 
   def destroy
     @reflection.destroy
-    redirect_to reflections_url, notice: "振り返りを削除しました。", status: :see_other
+    redirect_to reflections_url, notice: t("reflections.destroy.success"), status: :see_other
   end
 
   private

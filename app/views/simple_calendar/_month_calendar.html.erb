@@ -4,11 +4,11 @@
 
     <nav class="flex items-center gap-x-2">
       <%= link_to calendar.url_for_previous_view, class: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" do %>
-        <span>&larr; Previous</span>
+        <span>&larr; <%= t('simple_calendar.previous') %></span>
       <% end %>
       <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view, class: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
       <%= link_to calendar.url_for_next_view, class: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" do %>
-        <span>Next &rarr;</span>
+        <span><%= t('simple_calendar.next') %> &rarr;</span>
       <% end %>
     </nav>
   </div>

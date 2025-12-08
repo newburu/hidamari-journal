@@ -1,14 +1,14 @@
 <div class="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-8">
   <div class="mb-8 flex justify-between items-center bg-white p-4 rounded-xl shadow-sm border border-gray-100">
     <div>
-      <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Daily Goals Calendar</h1>
-      <p class="mt-1 text-sm text-gray-500">Track your daily progress at a glance</p>
+      <h1 class="text-2xl font-bold text-gray-900 tracking-tight"><%= t('simple_calendar.calendar_title') %></h1>
+      <p class="mt-1 text-sm text-gray-500"><%= t('simple_calendar.subtitle') %></p>
     </div>
     <%= link_to daily_tasks_path, class: "group inline-flex items-center gap-x-2 rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 transition-all duration-200 ease-in-out" do %>
       <svg class="-ml-0.5 h-5 w-5 text-gray-400 group-hover:text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
         <path fill-rule="evenodd" d="M2 3.75A.75.75 0 012.75 3h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 3.75zm0 4.167a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75zm0 4.166a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75zm0 4.167a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
       </svg>
-      List View
+      <%= t('simple_calendar.list_view') %>
     <% end %>
   </div>
 
@@ -29,15 +29,15 @@
                  <svg class="mr-1 h-3 w-3 text-green-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                  </svg>
-                 All Done
+                  <%= t('simple_calendar.all_done') %>
                </span>
             <% elsif completed_count > 0 %>
                <span class="inline-flex items-center w-full justify-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20 shadow-sm">
-                 <%= completed_count %> / <%= total_count %> Done
+                  <%= completed_count %> / <%= total_count %> <%= t('simple_calendar.done') %>
                </span>
             <% else %>
                <span class="inline-flex items-center w-full justify-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 shadow-sm">
-                 <%= total_count %> Tasks
+                  <%= total_count %> <%= t('simple_calendar.tasks') %>
                </span>
             <% end %>
           </div>

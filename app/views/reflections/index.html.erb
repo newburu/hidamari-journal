@@ -4,8 +4,8 @@
   <% end %>
 
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">振り返り一覧</h1>
-    <%= link_to "新規作成", new_reflection_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <h1 class="font-bold text-4xl"><%= t('reflections.index.title') %></h1>
+    <%= link_to t('reflections.index.new'), new_reflection_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
   <div id="reflections" class="min-w-full mt-4">
@@ -16,21 +16,21 @@
             <div class="flex justify-between items-center mb-2">
               <span class="text-sm text-gray-500"><%= reflection.date %></span>
               <span class="px-2 py-1 text-xs rounded <%= reflection.daily? ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800' %>">
-                <%= reflection.reflection_type.humanize %>
+                <%= t("activerecord.attributes.reflection.reflection_types.#{reflection.reflection_type}") %>
               </span>
             </div>
 
             <p class="text-gray-800 mb-2 truncate"><%= reflection.content %></p>
 
             <div class="flex justify-between items-center mt-4">
-              <span class="text-sm font-semibold">Score: <%= reflection.score %></span>
-              <%= link_to "詳細", reflection, class: "text-blue-600 hover:text-blue-800 text-sm" %>
+              <span class="text-sm font-semibold"><%= Reflection.human_attribute_name(:score) %>: <%= reflection.score %></span>
+              <%= link_to t('reflections.index.show'), reflection, class: "text-blue-600 hover:text-blue-800 text-sm" %>
             </div>
           </div>
         <% end %>
       </div>
     <% else %>
-      <p class="text-center text-gray-500 py-10">まだ振り返りがありません。</p>
+      <p class="text-center text-gray-500 py-10"><%= t('reflections.index.empty') %></p>
     <% end %>
   </div>
 </div>

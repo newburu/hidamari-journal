@@ -1,10 +1,10 @@
 <div class="mx-auto w-full max-w-4xl px-4 py-8">
   <div class="mb-8 flex justify-between items-center">
     <div>
-      <%= link_to "← Back to Theme", annual_theme_path(@annual_theme), class: "text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700" %>
-      <h1 class="text-3xl font-bold text-gray-900 mt-2">Monthly Goals (<%= @annual_theme.year %>)</h1>
+      <%= link_to t('monthly_goals.index.back_to_theme'), annual_theme_path(@annual_theme), class: "text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700" %>
+      <h1 class="text-3xl font-bold text-gray-900 mt-2"><%= t('monthly_goals.index.title', year: @annual_theme.year) %></h1>
     </div>
-    <%= link_to "New Goal", new_annual_theme_monthly_goal_path(@annual_theme), class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+    <%= link_to t('monthly_goals.index.new_goal'), new_annual_theme_monthly_goal_path(@annual_theme), class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -12,14 +12,14 @@
       <% goal = @monthly_goals.find { |g| g.month == month } %>
       <div class="bg-white shadow rounded-lg p-6 border border-gray-100 flex flex-col h-full <%= 'ring-2 ring-indigo-500' if Date.current.month == month && @annual_theme.year == Date.current.year %>">
         <div class="flex justify-between items-start mb-4">
-          <h2 class="text-xl font-bold text-gray-900"><%= month %>月</h2>
+          <h2 class="text-xl font-bold text-gray-900"><%= t('date.month_names')[month] %></h2>
           <% if goal %>
             <div class="flex space-x-2">
-              <%= link_to "Edit", edit_annual_theme_monthly_goal_path(@annual_theme, goal), class: "text-sm text-indigo-600 hover:text-indigo-900" %>
-              <%= button_to "Del", annual_theme_monthly_goal_path(@annual_theme, goal), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-sm text-red-600 hover:text-red-900 bg-transparent border-0 cursor-pointer" %>
+              <%= link_to t('monthly_goals.index.edit'), edit_annual_theme_monthly_goal_path(@annual_theme, goal), class: "text-sm text-indigo-600 hover:text-indigo-900" %>
+              <%= button_to t('monthly_goals.index.destroy'), annual_theme_monthly_goal_path(@annual_theme, goal), method: :delete, data: { turbo_confirm: t('common.confirm_destroy', default: 'Are you sure?') }, class: "text-sm text-red-600 hover:text-red-900 bg-transparent border-0 cursor-pointer" %>
             </div>
           <% else %>
-             <%= link_to "Add", new_annual_theme_monthly_goal_path(@annual_theme, month: month), class: "text-sm text-indigo-600 hover:text-indigo-900" %>
+             <%= link_to t('monthly_goals.index.add'), new_annual_theme_monthly_goal_path(@annual_theme, month: month), class: "text-sm text-indigo-600 hover:text-indigo-900" %>
           <% end %>
         </div>
 
@@ -28,20 +28,20 @@
             <p class="text-gray-700 whitespace-pre-wrap mb-4"><%= goal.goal %></p>
             <% if goal.mandala_item %>
               <div class="mt-auto pt-4 border-t border-gray-100">
-                <span class="text-xs font-medium text-gray-500 uppercase tracking-wider">Focus</span>
+                <span class="text-xs font-medium text-gray-500 uppercase tracking-wider"><%= t('monthly_goals.index.focus') %></span>
                 <p class="text-sm font-medium text-indigo-700"><%= goal.mandala_item.content %></p>
               </div>
             <% end %>
           </div>
         <% else %>
           <div class="flex-grow flex items-center justify-center text-gray-400 text-sm italic">
-            No goal set
+            <%= t('monthly_goals.index.no_goal') %>
           </div>
         <% end %>
 
         <div class="mt-4 pt-4 border-t border-gray-100 flex justify-center">
           <%= link_to daily_tasks_path(date: Date.new(@annual_theme.year, month, 1)), class: "text-sm font-medium text-indigo-600 hover:text-indigo-900 flex items-center" do %>
-            <span>View Tasks</span>
+            <span><%= t('monthly_goals.index.view_tasks') %></span>
             <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
             </svg>

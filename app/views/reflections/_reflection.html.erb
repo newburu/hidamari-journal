@@ -1,21 +1,21 @@
 <div id="<%= dom_id reflection %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Date:</strong>
+    <strong class="block font-medium mb-1"><%= Reflection.human_attribute_name(:date) %>:</strong>
     <%= reflection.date %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Type:</strong>
-    <%= reflection.reflection_type %>
+    <strong class="block font-medium mb-1"><%= Reflection.human_attribute_name(:reflection_type) %>:</strong>
+    <%= t("activerecord.attributes.reflection.reflection_types.#{reflection.reflection_type}") %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Content:</strong>
+    <strong class="block font-medium mb-1"><%= Reflection.human_attribute_name(:content) %>:</strong>
     <%= reflection.content %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Score:</strong>
+    <strong class="block font-medium mb-1"><%= Reflection.human_attribute_name(:score) %>:</strong>
     <%= reflection.score %>
   </p>
 </div>

@@ -1,10 +1,10 @@
 <div class="mx-auto w-full max-w-2xl px-4 py-8">
   <div class="mb-8">
-    <%= link_to "Back to themes", annual_themes_path, class: "text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700" %>
+    <%= link_to t('annual_themes.new.back'), annual_themes_path, class: "text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700" %>
   </div>
 
   <div class="bg-white shadow sm:rounded-lg p-6">
-    <h1 class="text-2xl font-bold text-gray-900 mb-6">Edit Annual Theme</h1>
+    <h1 class="text-2xl font-bold text-gray-900 mb-6"><%= t('annual_themes.edit.title') %></h1>
     <%= render "form", annual_theme: @annual_theme %>
   </div>
 </div>

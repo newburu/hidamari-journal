@@ -1,7 +1,7 @@
 <%= form_with(model: [@annual_theme, monthly_goal], class: "contents") do |form| %>
   <% if monthly_goal.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(monthly_goal.errors.count, "error") %> prohibited this monthly_goal from being saved:</h2>
+      <h2><%= t('monthly_goals.form.error_heading', count: monthly_goal.errors.count) %></h2>
       <ul>
         <% monthly_goal.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,27 +11,27 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :month, class: "block text-sm font-medium leading-6 text-gray-900" %>
-    <%= form.select :month, (1..12).map { |m| ["#{m}月", m] }, {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full focus:ring-2 focus:ring-indigo-600 focus:border-transparent" %>
+    <%= form.label :month, t('monthly_goals.form.label_month'), class: "block text-sm font-medium leading-6 text-gray-900" %>
+    <%= form.select :month, (1..12).map { |m| [t('date.month_names')[m], m] }, {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full focus:ring-2 focus:ring-indigo-600 focus:border-transparent" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :goal, class: "block text-sm font-medium leading-6 text-gray-900" %>
+    <%= form.label :goal, t('monthly_goals.form.label_goal'), class: "block text-sm font-medium leading-6 text-gray-900" %>
     <%= form.text_area :goal, rows: 3, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full focus:ring-2 focus:ring-indigo-600 focus:border-transparent" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :mandala_item_id, "Focus Item (Optional)", class: "block text-sm font-medium leading-6 text-gray-900" %>
+    <%= form.label :mandala_item_id, t('monthly_goals.form.label_mandala'), class: "block text-sm font-medium leading-6 text-gray-900" %>
     <%# Show only items that are direct children of the center (main sub-goals) %>
     <%= form.collection_select :mandala_item_id,
         @annual_theme.mandala_items.where(parent: @annual_theme.mandala_items.find_by(is_center: true, parent_id: nil)).order(:position),
         :id, :content,
-        { include_blank: "None" },
+        { include_blank: t('monthly_goals.form.none') },
         class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full focus:ring-2 focus:ring-indigo-600 focus:border-transparent" %>
-    <p class="mt-1 text-sm text-gray-500">Select a sub-goal from your Mandala Chart to focus on this month.</p>
+    <p class="mt-1 text-sm text-gray-500"><%= t('monthly_goals.form.mandala_hint') %></p>
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-indigo-600 text-white inline-block font-medium cursor-pointer hover:bg-indigo-500" %>
+    <%= form.submit t('common.save'), class: "rounded-lg py-3 px-5 bg-indigo-600 text-white inline-block font-medium cursor-pointer hover:bg-indigo-500" %>
   </div>
 <% end %>

@@ -1,0 +1,190 @@
+ja:
+  common:
+    sign_out: "サインアウト"
+    sign_in: "サインイン"
+    save: "保存"
+    confirm_destroy: "本当に削除しますか？"
+  date:
+    month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+    day_names: [日, 月, 火, 水, 木, 金, 土]
+    abbr_day_names: [日, 月, 火, 水, 木, 金, 土]
+  layouts:
+    application:
+      annual_themes: "年間テーマ"
+      daily_tasks: "デイリータスク"
+      reflections: "振り返り"
+      mandala_life: "マンダラライフ"
+  annual_themes:
+    create:
+      create:
+      success: "月間目標を作成しました。"
+    update:
+      success: "月間目標を更新しました。"
+    destroy:
+      success: "月間目標を削除しました。"
+    success: "年間テーマを作成しました。"
+    update:
+      success: "年間テーマを更新しました。"
+    form:
+      kanji_placeholder: "挑"
+      kanji_hint: "今年1年を象徴する漢字1文字を選んでください。"
+      meaning_placeholder: "なぜこの漢字を選びましたか？何を達成したいですか？"
+      error_heading: "%{count}件のエラーが発生したため保存できませんでした:"
+    new:
+      title: "年間テーマ設定"
+      back: "年間テーマ一覧に戻る"
+    edit:
+      title: "年間テーマ編集"
+    chart:
+      title: "マンダラチャート: %{year}"
+      back: "← 年間テーマに戻る"
+      error: "エラー"
+      instruction: "セルをクリックして目標を編集してください。中心はメインの年間テーマです。"
+    destroy:
+      success: "年間テーマを削除しました。"
+    index:
+      title: "年間テーマ一覧"
+      new_theme: "新規テーマ作成"
+      show: "詳細"
+      empty: "年間テーマがまだありません。作成しましょう！"
+    show:
+      annual_theme: "%{year}年 年間テーマ"
+      edit: "編集"
+      destroy: "削除"
+      chart: "マンダラチャートを開く"
+      monthly_goals: "月間目標"
+      meaning_goals: "意味と目標"
+  reflections:
+    index:
+      title: "振り返り一覧"
+      new: "新規作成"
+      show: "詳細"
+      empty: "まだ振り返りがありません。"
+    show:
+      edit: "編集"
+      back: "一覧に戻る"
+      destroy: "削除"
+    new:
+      title: "新規振り返り"
+      back: "一覧に戻る"
+    create:
+      success: "振り返りを作成しました。"
+    update:
+      success: "振り返りを更新しました。"
+    destroy:
+      success: "振り返りを削除しました。"
+    edit:
+      title: "振り返り編集"
+      show: "表示"
+      back: "一覧に戻る"
+    form:
+      save: "保存"
+      error_heading: "%{count}件のエラーが発生したため保存できませんでした:"
+  activerecord:
+    models:
+      annual_theme: "年間テーマ"
+    attributes:
+      annual_theme:
+        year: "年"
+        kanji: "今年の漢字"
+        meaning: "意味"
+      reflection:
+        date: "日付"
+        reflection_type: "種類"
+        content: "内容"
+        score: "自己評価 (数値)"
+        reflection_types:
+          daily: "日次"
+          monthly: "月次"
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        remember_me: "ログインしたままにする"
+        current_password: "現在のパスワード"
+        password_confirmation: "パスワード（確認）"
+  monthly_goals:
+    index:
+      title: "月間目標 (%{year})"
+      back_to_theme: "← 年間テーマに戻る"
+      new_goal: "目標を作成"
+      edit: "編集"
+      destroy: "削除"
+      add: "追加"
+      no_goal: "目標未設定"
+      focus: "フォーカス"
+      view_tasks: "タスクを表示"
+    new:
+      title: "%{year}年の月間目標作成"
+      back: "詳細に戻る"
+    edit:
+      title: "月間目標編集"
+      back: "詳細に戻る"
+    form:
+      label_month: "月"
+      label_goal: "目標"
+      label_mandala: "フォーカス項目 (任意)"
+      mandala_hint: "今月の重点項目としてマンダラチャートのサブゴールを選択してください。"
+      none: "なし"
+      error_heading: "%{count}件のエラーが発生したため保存できませんでした:"
+  daily_tasks:
+    index:
+      today: "今日"
+      calendar_view: "カレンダー"
+      empty: "この日のタスクはありません。"
+    form:
+      placeholder: "やるべきことは何ですか？"
+      no_goal: "目標なし"
+      add: "追加"
+    create:
+      success: "タスクを作成しました。"
+      failure: "タスクの作成に失敗しました。"
+    update:
+      success: "タスクを更新しました。"
+      failure: "タスクの更新に失敗しました。"
+    destroy:
+      success: "タスクを削除しました。"
+  simple_calendar:
+    today: "今日"
+    previous: "← 前月"
+    next: "翌月 →"
+    week: "週"
+    calendar_title: "デイリータスクカレンダー"
+    subtitle: "日々の進捗を一目で確認"
+    list_view: "リスト表示"
+    all_done: "完了"
+    tasks: "タスク"
+    tasks: "タスク"
+    done: "完了"
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      model_invalid: "バリデーションに失敗しました: %{errors}"
+      inclusion: "は一覧にありません"
+      exclusion: "は予約されています"
+      invalid: "は不正な値です"
+      confirmation: "が一致しません"
+      accepted: "を受諾してください"
+      empty: "を入力してください"
+      blank: "を入力してください"
+      present: "は入力できません"
+      too_long: "は%{count}文字以内で入力してください"
+      too_short: "は%{count}文字以上で入力してください"
+      wrong_length: "は%{count}文字で入力してください"
+      not_a_number: "は数値で入力してください"
+      not_an_integer: "は整数で入力してください"
+      greater_than: "は%{count}より大きい値にしてください"
+      greater_than_or_equal_to: "は%{count}以上の値にしてください"
+      equal_to: "は%{count}にしてください"
+      less_than: "は%{count}より小さい値にしてください"
+      less_than_or_equal_to: "は%{count}以下の値にしてください"
+      other_than: "は%{count}以外の値にしてください"
+      odd: "は奇数で入力してください"
+      even: "は偶数で入力してください"
+      required: "を入力してください"
+      taken: "はすでに存在します"
+  mandala_items:
+    empty: "空"
+    placeholder: "目標..."
+    update:
+      success: "更新しました。"
+    authorization_error: "権限がありません。"
