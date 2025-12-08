@@ -61,6 +61,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "dotenv-rails"
 end
 
 group :test do
@@ -70,5 +71,8 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+gem "omniauth-google-oauth2"
+gem "omniauth-twitter2"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
 
 gem "holidays", "~> 8.8"

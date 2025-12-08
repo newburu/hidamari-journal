@@ -155,6 +155,12 @@ ja:
     tasks: "タスク"
     tasks: "タスク"
     done: "完了"
+  devise:
+    registrations:
+      new:
+        prompt_for_email: "登録を完了するためにメールアドレスを入力してください。"
+    shared:
+      minimum_password_length: "(%{count}文字以上)"
   errors:
     format: "%{attribute} %{message}"
     messages:

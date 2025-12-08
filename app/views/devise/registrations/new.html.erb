@@ -1,25 +1,38 @@
 <h2><%= t('devise.registrations.new.sign_up') %></h2>
 
+<div class="my-4">
+  <%= button_to "Sign up with Google", user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false }, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+</div>
+<div class="my-4">
+  <%= button_to "Sign up with X", user_twitter2_omniauth_authorize_path, method: :post, data: { turbo: false }, class: "bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded" %>
+</div>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+
+  <% if session["devise.omniauth_data"] %>
+    <p><%= t('devise.registrations.new.prompt_for_email') %></p>
+  <% end %>
 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <% unless session["devise.omniauth_data"] %>
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit t('devise.registrations.new.sign_up') %>
