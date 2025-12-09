@@ -1,42 +1,67 @@
-<h2><%= t('devise.registrations.new.sign_up') %></h2>
+<div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-md">
+    <div>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900"><%= t('.sign_up') %></h2>
+    </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "mt-8 space-y-6" }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-<div class="my-4">
-  <%= button_to "Sign up with Google", user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false }, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
-</div>
-<div class="my-4">
-  <%= button_to "Sign up with X", user_twitter2_omniauth_authorize_path, method: :post, data: { turbo: false }, class: "bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded" %>
-</div>
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <%= f.label :name, class: "sr-only" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", required: true, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: t('activerecord.attributes.user.name') %>
+        </div>
+        <div>
+          <%= f.label :email, class: "sr-only" %>
+          <%= f.email_field :email, autocomplete: "email", required: true, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: t('activerecord.attributes.user.email') %>
+        </div>
+        <div>
+          <%= f.label :password, class: "sr-only" %>
+          <%= f.password_field :password, autocomplete: "new-password", required: true, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: t('activerecord.attributes.user.password') %>
+        </div>
+        <div>
+          <%= f.label :password_confirmation, class: "sr-only" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: t('activerecord.attributes.user.password_confirmation') %>
+        </div>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <div>
+        <%= f.submit t('.sign_up'), class: "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      </div>
+    <% end %>
 
-  <% if session["devise.omniauth_data"] %>
-    <p><%= t('devise.registrations.new.prompt_for_email') %></p>
-  <% end %>
+    <div class="mt-6">
+      <div class="relative">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-gray-300"></div>
+        </div>
+        <div class="relative flex justify-center text-sm">
+          <span class="px-2 bg-white text-gray-500"><%= t('common.or_continue_with') %></span>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% unless session["devise.omniauth_data"] %>
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <div class="mt-6 grid grid-cols-2 gap-3">
+        <div>
+          <%= link_to omniauth_authorize_path(resource_name, :google_oauth2), class: "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50" do %>
+            <span class="sr-only">Sign in with Google</span>
+            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.992 3.657 9.128 8.438 9.878V14.89H5.972v-3.48h2.466V8.71c0-2.433 1.451-3.778 3.652-3.778 1.056 0 2.164.19 2.164.19v2.958h-1.48c-1.207 0-1.578.72-1.578 1.53v1.822h3.303l-.523 3.48h-2.78V19.878A10.001 10.001 0 0020 10z" clip-rule="evenodd" />
+            </svg>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to omniauth_authorize_path(resource_name, :twitter2), class: "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50" do %>
+            <span class="sr-only">Sign in with X</span>
+            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 4.12a8.239 8.239 0 01-2.357.646 4.132 4.132 0 001.804-2.27 8.224 8.224 0 01-2.605.996A4.107 4.107 0 0014.142 2a4.109 4.109 0 00-4.108 4.108c0 .584.066 1.15.193 1.69A11.65 11.65 0 011.392 3.05a4.107 4.107 0 001.27 5.477A4.074 4.074 0 01.8 8.163v.052a4.108 4.108 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
+            </svg>
+          <% end %>
+        </div>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <div class="text-sm text-center mt-6">
+      <%= render "devise/shared/links" %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit t('devise.registrations.new.sign_up') %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
