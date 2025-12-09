@@ -18,7 +18,7 @@ class User < ApplicationRecord
       user = find_by(email: auth.info.email)
       if user
         # Link the account
-        user.update(provider: auth.provider, uid: auth.uid)
+        user.update(provider: auth.provider, uid: auth.uid, name: auth.info.name)
         return user
       end
     end
@@ -28,6 +28,7 @@ class User < ApplicationRecord
       new_user.provider = auth.provider
       new_user.uid = auth.uid
       new_user.email = auth.info.email if auth.info.email
+      new_user.name = auth.info.name if auth.info.name
       new_user.password = Devise.friendly_token[0, 20]
     end
   end
