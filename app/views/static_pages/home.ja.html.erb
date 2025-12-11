@@ -1,7 +1,7 @@
 <div class="text-center">
   <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">マンダラチャートで目標を達成しよう</h1>
   <p class="mt-6 text-lg leading-8 text-gray-600">
-    マンダラライフは、マンダラチャートを使ってあなたの目標達成をサポートするアプリケーションです。
+    <%= t('layouts.application.hidamari_journal') %>は、マンダラチャートを使ってあなたの目標達成をサポートするアプリケーションです。
   </p>
     <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
       <%= button_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600" %>

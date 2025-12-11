@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || t('layouts.application.mandala_life') %></title>
+    <title><%= content_for(:title) || t('layouts.application.hidamari_journal') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="<%= t('layouts.application.mandala_life') %>">
+    <meta name="application-name" content="<%= t('layouts.application.hidamari_journal') %>">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -30,7 +30,7 @@
             <div class="flex flex-shrink-0 items-center">
               <%= link_to root_path, class: "flex items-center text-xl font-bold text-indigo-600" do %>
                 <%= image_tag "logo.jpg", class: "h-8 w-8 rounded-md mr-2", alt: "Logo" %>
-                <%= t('layouts.application.mandala_life') %>
+                <%= t('layouts.application.hidamari_journal') %>
               <% end %>
             </div>
             <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
