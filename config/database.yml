@@ -85,20 +85,16 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  primary: &primary_production
+  prepared_statements: false
+  primary:
     <<: *default
-    database: mandala_goals_production
-    username: mandala_goals
-    password: <%= ENV["MANDALA_GOALS_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: mandala_goals_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: mandala_goals_production_queue
-    migrations_paths: db/queue_migrate
+    url: <%= ENV["DATABASE_URL"] %>
   cable:
-    <<: *primary_production
-    database: mandala_goals_production_cable
-    migrations_paths: db/cable_migrate
+    <<: *default
+    url: <%= ENV["DATABASE_URL"] %>
+  queue:
+    <<: *default
+    url: <%= ENV["DATABASE_URL"] %>
+  cache:
+    <<: *default
+    url: <%= ENV["DATABASE_URL"] %>
