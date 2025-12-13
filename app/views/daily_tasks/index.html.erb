@@ -15,27 +15,18 @@
     </div>
   </div>
 
-  <div class="bg-white shadow sm:rounded-lg p-6 mb-8">
-    <%= form_with(model: @daily_task, class: "flex gap-4") do |form| %>
-      <%= form.hidden_field :date %>
-      <div class="flex-grow">
-        <%= form.text_field :title, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", placeholder: t('daily_tasks.form.placeholder') %>
-      </div>
-      <% if @monthly_goals.any? %>
-        <div class="w-1/3">
-          <%= form.collection_select :monthly_goal_id, @monthly_goals, :id, :goal, { include_blank: t('daily_tasks.form.no_goal') }, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
-        </div>
-      <% end %>
-      <%= form.submit t('daily_tasks.form.add'), class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
-    <% end %>
+  <div class="mb-8 flex justify-end">
+    <%= link_to t('daily_tasks.index.new_task'), new_daily_task_path(date: @date), data: { turbo_frame: "modal" }, class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
   </div>
 
   <div id="daily_tasks" class="space-y-4">
     <%= render @daily_tasks %>
     <% if @daily_tasks.empty? %>
-      <div class="text-center py-12 bg-gray-50 rounded-lg border-2 border-dashed border-gray-200">
+      <div id="empty_daily_tasks" class="text-center py-12 bg-gray-50 rounded-lg border-2 border-dashed border-gray-200">
         <p class="text-gray-500"><%= t('daily_tasks.index.empty') %></p>
       </div>
     <% end %>
   </div>
 </div>
+
+<turbo-frame id="modal" target="_top"></turbo-frame>

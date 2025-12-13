@@ -1,20 +1,16 @@
 class DailyTasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_daily_task, only: %i[ update destroy ]
+  before_action :set_date, only: %i[ index new create ]
+  before_action :set_monthly_goals, only: %i[ index new create ]
 
   def index
-    @date = params[:date] ? Date.parse(params[:date]) : Date.current
     @daily_tasks = current_user.daily_tasks.where(date: @date).order(:created_at)
+  end
 
-    # Preload monthly goals for the current month to allow quick selection
-    current_annual_theme = current_user.annual_themes.find_by(year: @date.year)
-    @monthly_goals = if current_annual_theme
-                       current_annual_theme.monthly_goals.where(month: @date.month)
-    else
-                       []
-    end
-
+  def new
     @daily_task = current_user.daily_tasks.new(date: @date)
+    render partial: "form", locals: { daily_task: @daily_task, monthly_goals: @monthly_goals }
   end
 
   def calendar
@@ -25,10 +21,14 @@ class DailyTasksController < ApplicationController
   def create
     @daily_task = current_user.daily_tasks.new(daily_task_params)
 
-    if @daily_task.save
-      redirect_to daily_tasks_path(date: @daily_task.date), notice: t("daily_tasks.create.success")
-    else
-      redirect_to daily_tasks_path(date: @daily_task.date), alert: t("daily_tasks.create.failure")
+    respond_to do |format|
+      if @daily_task.save
+        format.turbo_stream
+        format.html { redirect_to daily_tasks_path(date: @daily_task.date), notice: t("daily_tasks.create.success") }
+      else
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("modal", partial: "form", locals: { daily_task: @daily_task, monthly_goals: @monthly_goals }) }
+        format.html { render :index, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -53,6 +53,19 @@ class DailyTasksController < ApplicationController
   end
 
   private
+
+  def set_date
+    @date = params[:date] ? Date.parse(params[:date]) : Date.current
+  end
+
+  def set_monthly_goals
+    current_annual_theme = current_user.annual_themes.find_by(year: @date.year)
+    @monthly_goals = if current_annual_theme
+                       current_annual_theme.monthly_goals.where(month: @date.month)
+                     else
+                       []
+                     end
+  end
 
   def set_daily_task
     @daily_task = current_user.daily_tasks.find_by(id: params[:id])

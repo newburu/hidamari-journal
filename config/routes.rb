@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
 
     resources :mandala_items, only: [ :edit, :update ]
-    resources :daily_tasks, only: [ :index, :create, :update, :destroy ] do
+    resources :daily_tasks, only: [ :index, :new, :create, :update, :destroy ] do
       collection do
         get :calendar
       end
