@@ -73,7 +73,11 @@ class AnnualThemesController < ApplicationController
 
   private
     def set_annual_theme
-      @annual_theme = current_user.annual_themes.find(params[:id])
+      @annual_theme = current_user.annual_themes.find_by(id: params[:id])
+      if @annual_theme.nil?
+        redirect_to root_path, alert: t("annual_themes.not_found")
+        nil
+      end
     end
 
     def annual_theme_params

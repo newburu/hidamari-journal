@@ -55,7 +55,11 @@ class DailyTasksController < ApplicationController
   private
 
   def set_daily_task
-    @daily_task = current_user.daily_tasks.find(params[:id])
+    @daily_task = current_user.daily_tasks.find_by(id: params[:id])
+    if @daily_task.nil?
+      redirect_to root_path, alert: t("daily_tasks.not_found")
+      nil
+    end
   end
 
   def daily_task_params

@@ -22,6 +22,7 @@ ja:
       terms_of_service: "利用規約"
       privacy_policy: "プライバシーポリシー"
   annual_themes:
+    not_found: "データが見つからないか、アクセス権限がありません。"
     create:
       create:
       success: "月間目標を作成しました。"
@@ -67,6 +68,7 @@ ja:
       monthly_goals: "月間目標"
       meaning_goals: "意味と目標"
   reflections:
+    not_found: "振り返りが見つからないか、アクセス権限がありません。"
     index:
       title: "振り返り一覧"
       new: "新規作成"
@@ -115,6 +117,7 @@ ja:
         current_password: "現在のパスワード"
         password_confirmation: "パスワード（確認）"
   monthly_goals:
+    not_found: "目標が見つからないか、アクセス権限がありません。"
     index:
       title: "月間目標 (%{year})"
       back_to_theme: "← 年間テーマに戻る"
@@ -145,6 +148,7 @@ ja:
       none: "なし"
       error_heading: "%{count}件のエラーが発生したため保存できませんでした:"
   daily_tasks:
+    not_found: "タスクが見つからないか、アクセス権限がありません。"
     index:
       today: "今日"
       calendar_view: "カレンダー"
@@ -207,6 +211,7 @@ ja:
       required: "を入力してください"
       taken: "はすでに存在します"
   mandala_items:
+    not_found: "項目が見つからないか、アクセス権限がありません。"
     empty: "空"
     placeholder: "目標..."
     update:

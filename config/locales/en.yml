@@ -22,6 +22,7 @@ en:
       terms_of_service: "Terms of Service"
       privacy_policy: "Privacy Policy"
   annual_themes:
+    not_found: "Theme not found or access denied."
     create:
       create:
       success: "Monthly goal was successfully created."
@@ -68,6 +69,7 @@ en:
       monthly_goals: "Monthly Goals"
       meaning_goals: "Meaning & Goals"
   reflections:
+    not_found: "Record not found or access denied."
     index:
       title: "Reflections"
       new: "New Reflection"
@@ -116,6 +118,7 @@ en:
         current_password: "Current Password"
         password_confirmation: "Password Confirmation"
   monthly_goals:
+    not_found: "Record not found or access denied."
     index:
       title: "Monthly Goals (%{year})"
       back_to_theme: "← Back to Theme"
@@ -140,6 +143,7 @@ en:
       none: "None"
       error_heading: "%{count} errors prohibited this monthly goal from being saved:"
   daily_tasks:
+    not_found: "Record not found or access denied."
     index:
       today: "Today"
       calendar_view: "Calendar View"
@@ -174,6 +178,7 @@ en:
     shared:
       minimum_password_length: "(%{count} characters minimum)"
   mandala_items:
+    not_found: "Item not found or access denied."
     empty: "Empty"
     placeholder: "Goal..."
     update:
