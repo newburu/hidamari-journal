@@ -24,10 +24,10 @@ class MandalaItemsController < ApplicationController
   private
 
   def set_mandala_item
-    @mandala_item = MandalaItem.find(params[:id])
-    # Ensure ownership
-    unless @mandala_item.annual_theme.user_id == current_user.id
-      redirect_to root_path, alert: t("mandala_items.authorization_error")
+    @mandala_item = MandalaItem.find_by(id: params[:id])
+    if @mandala_item.nil? || @mandala_item.annual_theme.user_id != current_user.id
+      redirect_to root_path, alert: t("mandala_items.not_found")
+      nil
     end
   end
 

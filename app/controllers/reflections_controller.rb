@@ -41,7 +41,11 @@ class ReflectionsController < ApplicationController
 
   private
     def set_reflection
-      @reflection = current_user.reflections.find(params[:id])
+      @reflection = current_user.reflections.find_by(id: params[:id])
+      if @reflection.nil?
+        redirect_to root_path, alert: t("reflections.not_found")
+        nil
+      end
     end
 
     def reflection_params

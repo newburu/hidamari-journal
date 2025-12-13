@@ -37,4 +37,17 @@ class DailyTasksControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to daily_tasks_url(date: @daily_task.date)
   end
+
+  test "should not access other user's daily tasks" do
+    other_user = users(:two)
+    other_task = DailyTask.create!(user: other_user, date: Date.today, title: "Other's task")
+
+    assert_raises ActiveRecord::RecordNotFound do
+      patch daily_task_url(other_task), params: { daily_task: { completed: true } }
+    end
+
+    assert_raises ActiveRecord::RecordNotFound do
+      delete daily_task_url(other_task)
+    end
+  end
 end

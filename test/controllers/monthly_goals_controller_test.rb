@@ -59,4 +59,26 @@ class MonthlyGoalsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to annual_theme_monthly_goals_url(@annual_theme)
   end
+
+  test "should not access other user's monthly goals" do
+    other_user = users(:two)
+    other_annual_theme = AnnualTheme.create!(user: other_user, year: 2027, kanji: "他", meaning: "Other")
+    other_monthly_goal = other_annual_theme.monthly_goals.create!(
+      user: other_user,
+      month: 1,
+      goal: "Other user's goal"
+    )
+
+    assert_raises ActiveRecord::RecordNotFound do
+      get edit_annual_theme_monthly_goal_url(other_annual_theme, other_monthly_goal)
+    end
+
+    assert_raises ActiveRecord::RecordNotFound do
+      patch annual_theme_monthly_goal_url(other_annual_theme, other_monthly_goal), params: { monthly_goal: { goal: "Hacked" } }
+    end
+
+    assert_raises ActiveRecord::RecordNotFound do
+      delete annual_theme_monthly_goal_url(other_annual_theme, other_monthly_goal)
+    end
+  end
 end

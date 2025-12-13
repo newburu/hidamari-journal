@@ -49,4 +49,25 @@ class ReflectionsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to reflections_url
   end
+
+  test "should not access other user's reflections" do
+    other_user = users(:two)
+    other_reflection = Reflection.create!(user: other_user, date: Date.today, content: "Other's reflection", reflection_type: :daily, score: 5)
+
+    assert_raises ActiveRecord::RecordNotFound do
+      get reflection_url(other_reflection)
+    end
+
+    assert_raises ActiveRecord::RecordNotFound do
+      get edit_reflection_url(other_reflection)
+    end
+
+    assert_raises ActiveRecord::RecordNotFound do
+      patch reflection_url(other_reflection), params: { reflection: { content: "Hacked" } }
+    end
+
+    assert_raises ActiveRecord::RecordNotFound do
+      delete reflection_url(other_reflection)
+    end
+  end
 end
