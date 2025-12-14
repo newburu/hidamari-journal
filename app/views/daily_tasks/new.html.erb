@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "modal" do %>
+  <div data-controller="modal" data-action="click->modal#closeBackground" data-modal-target="container" class="fixed inset-0 z-[60] flex items-center justify-center bg-gray-500 bg-opacity-75" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="w-full max-w-lg bg-white rounded-lg shadow-xl p-6 relative">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-lg font-semibold"><%= t('daily_tasks.form.title') %></h2>
+        <button type="button" data-action="click->modal#close" class="text-gray-400 hover:text-gray-600">
+          &times;
+        </button>
+      </div>
+
+      <%= render "form", daily_task: @daily_task, monthly_goals: @monthly_goals %>
+      
+      <div class="mt-4 flex justify-end">
+        <button type="button" data-action="click->modal#close" class="text-sm text-gray-500 hover:text-gray-700 underline"><%= t('daily_tasks.form.cancel') %></button>
+      </div>
+    </div>
+  </div>
+<% end %>

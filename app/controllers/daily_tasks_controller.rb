@@ -6,11 +6,11 @@ class DailyTasksController < ApplicationController
 
   def index
     @daily_tasks = current_user.daily_tasks.where(date: @date).order(:created_at)
+    @daily_task = current_user.daily_tasks.new(date: @date)
   end
 
   def new
     @daily_task = current_user.daily_tasks.new(date: @date)
-    render partial: "form", locals: { daily_task: @daily_task, monthly_goals: @monthly_goals }
   end
 
   def calendar
@@ -62,9 +62,9 @@ class DailyTasksController < ApplicationController
     current_annual_theme = current_user.annual_themes.find_by(year: @date.year)
     @monthly_goals = if current_annual_theme
                        current_annual_theme.monthly_goals.where(month: @date.month)
-                     else
+    else
                        []
-                     end
+    end
   end
 
   def set_daily_task

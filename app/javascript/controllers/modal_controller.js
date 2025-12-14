@@ -1,32 +1,39 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="modal"
 export default class extends Controller {
+  static targets = ["container"]
+
   connect() {
-    this.boundCloseOnEscape = this.closeOnEscape.bind(this)
-    document.addEventListener("keydown", this.boundCloseOnEscape)
+    // Close modal on Escape key press
+    this.closeOnEscape = (e) => {
+      if (e.key === "Escape" && !this.containerTarget.classList.contains("hidden")) {
+        this.close(e)
+      }
+    }
+    document.addEventListener("keydown", this.closeOnEscape)
   }
 
   disconnect() {
-    document.removeEventListener("keydown", this.boundCloseOnEscape)
+    document.removeEventListener("keydown", this.closeOnEscape)
   }
 
-  close() {
-    // Remove the modal from the DOM
-    this.element.parentElement.removeAttribute("src") // Remove src from the turbo-frame
-    this.element.remove()
+  open(e) {
+    if (e) e.preventDefault()
+    this.containerTarget.classList.remove("hidden")
+    // Focus first input if possible
+    const input = this.containerTarget.querySelector("input:not([type='hidden']), textarea")
+    if (input) input.focus()
   }
 
-  closeOnEscape(event) {
-    if (event.key === "Escape") {
-      this.close()
-    }
+  close(e) {
+    if (e) e.preventDefault()
+    this.containerTarget.classList.add("hidden")
   }
 
-  // Allow closing the modal by clicking on the background overlay.
-  closeWithBackground(event) {
-    if (event.target === this.element) {
-      this.close()
+  // Close if clicked outside the content (on the background)
+  closeBackground(e) {
+    if (e.target === this.containerTarget) {
+      this.close(e)
     }
   }
 }

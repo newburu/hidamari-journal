@@ -98,7 +98,12 @@ en:
   activerecord:
     models:
       annual_theme: "Annual Theme"
+      daily_task: "Daily Task"
     attributes:
+      daily_task:
+        title: "Title"
+        completed: "Completed"
+        monthly_goal_id: "Related Monthly Goal"
       annual_theme:
         year: "Year"
         kanji: "Kanji of the year"
@@ -148,7 +153,10 @@ en:
       today: "Today"
       calendar_view: "Calendar View"
       empty: "No tasks for this day."
+      new_task: "Add New Task"
     form:
+      title: "New Task"
+      cancel: "Cancel"
       placeholder: "What needs to be done?"
       no_goal: "No specific goal"
       add: "Add"

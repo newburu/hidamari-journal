@@ -97,7 +97,12 @@ ja:
   activerecord:
     models:
       annual_theme: "年間テーマ"
+      daily_task: "デイリータスク"
     attributes:
+      daily_task:
+        title: "タスク名"
+        completed: "完了"
+        monthly_goal_id: "関連する月間目標"
       annual_theme:
         year: "年"
         kanji: "今年の漢字"
@@ -153,7 +158,10 @@ ja:
       today: "今日"
       calendar_view: "カレンダー"
       empty: "この日のタスクはありません。"
+      new_task: "新しいタスクを追加"
     form:
+      title: "タスクの追加"
+      cancel: "キャンセル"
       placeholder: "やるべきことは何ですか？"
       no_goal: "目標なし"
       add: "追加"
