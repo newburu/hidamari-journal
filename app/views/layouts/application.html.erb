@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <% if ENV['GOOGLE_ANALYTICS_ID'].present? %>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=<%= ENV['GOOGLE_ANALYTICS_ID'] %>"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '<%= ENV['GOOGLE_ANALYTICS_ID'] %>');
+      </script>
+    <% end %>
+
     <title><%= content_for(:title) || t('layouts.application.hidamari_journal') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
