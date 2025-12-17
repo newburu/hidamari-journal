@@ -13,6 +13,11 @@
       </script>
     <% end %>
 
+    <% if ENV['GOOGLE_ADSENSE_ID'].present? %>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=<%= ENV['GOOGLE_ADSENSE_ID'] %>"
+         crossorigin="anonymous"></script>
+    <% end %>
+
     <title><%= content_for(:title) || t('layouts.application.hidamari_journal') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
