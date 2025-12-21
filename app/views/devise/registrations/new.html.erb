@@ -42,7 +42,7 @@
 
       <div class="mt-6 grid grid-cols-2 gap-3">
         <div>
-          <%= link_to omniauth_authorize_path(resource_name, :google_oauth2), class: "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50" do %>
+          <%= button_to omniauth_authorize_path(resource_name, :google_oauth2), data: { turbo: false }, class: "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50" do %>
             <span class="sr-only">Sign in with Google</span>
             <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.992 3.657 9.128 8.438 9.878V14.89H5.972v-3.48h2.466V8.71c0-2.433 1.451-3.778 3.652-3.778 1.056 0 2.164.19 2.164.19v2.958h-1.48c-1.207 0-1.578.72-1.578 1.53v1.822h3.303l-.523 3.48h-2.78V19.878A10.001 10.001 0 0020 10z" clip-rule="evenodd" />
@@ -50,7 +50,7 @@
           <% end %>
         </div>
         <div>
-          <%= link_to omniauth_authorize_path(resource_name, :twitter2), class: "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50" do %>
+          <%= button_to omniauth_authorize_path(resource_name, :twitter2), data: { turbo: false }, class: "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-900 hover:bg-gray-50" do %>
             <span class="sr-only">Sign in with X</span>
             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
