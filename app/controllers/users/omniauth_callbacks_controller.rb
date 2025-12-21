@@ -4,7 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def twitter2
-    handle_auth("twitter")
+    handle_auth("X")
   end
 
   def failure
