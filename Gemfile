@@ -73,6 +73,6 @@ end
 gem "devise", "~> 4.9"
 gem "omniauth-google-oauth2"
 gem "omniauth-twitter2"
-gem "omniauth-rails_csrf_protection", "~> 1.0"
+gem "omniauth-rails_csrf_protection", "~> 2.0"
 
 gem "holidays", "~> 8.8"
